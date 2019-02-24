@@ -1,0 +1,104 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"description": "This is the Swagger Documentation implementation of API's on NodeJS. You will find detailed documentation and model data about the REST API's. To check if an API is working , execute the API after entering the valid parameters",
+		"version": "1.0.0",
+		"title": "Calculator-App",
+		"termsOfService": "",
+		"contact": {
+			"email": "api@calculator.com"
+		}
+	},
+	"host": "127.0.0.1:4002",
+	"basePath": "/api/v1",
+	"tags": [
+		{
+			"name": "Calculator",
+			"description": "Everything about your Calculator Node"
+		}
+	],
+	"schemes": [
+		"http"
+	],
+	"paths": {
+		"/calculate/operations": {
+			"post": {
+				"tags": [
+					"Calculator"
+				],
+				"summary": "Save the operations",
+				"description": "Adds a new user query data information into the database",
+				"operationId": "SaveOperation",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "register data to be added to db",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/operations"
+						}
+					}
+
+				],
+				"responses": {
+					"201": {
+						"description": "Successfully Created"
+					},
+					"409": {
+						"description": "Invalid input Error"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			}
+		},
+		"/calculate/opHistory": {
+			"post": {
+				"tags": [
+					"Calculator"
+				],
+				"summary": "get operations info within the pariod",
+				"description": "get operations info within the pariod",
+				"operationId": "getHistory",
+				"consumes": [
+					"application/json"
+				],
+				"produces": [
+					"application/json"
+				],
+				"parameters": [
+				  {
+						"in": "body",
+						"name": "body",
+						"description": "pariod id",
+						"required": true,
+					  "schema": {
+						  "$ref": "#/definitions/opHistory"
+					  }
+					}
+				],
+				"responses": {
+					"201": {
+						"description": "Successfully fetch user info"
+					},
+					"409": {
+						"description": "Invalid input Error"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			}
+
+		}
+
+	}
+}
